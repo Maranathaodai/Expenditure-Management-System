@@ -1,0 +1,10 @@
+2.Category Management
+
+Objective:
+-Manage list of unique expenditure categories like "Cement", "TV Adverts"
+-Use HashSet to ensure uniqueness
+-Allow category lookup
+
+The provided Java code implements a simple console application for managing categories using a `HashSet`. This application allows users to add categories, view all categories, and search for a specific category. 
+
+  

@@ -1,0 +1,1 @@
+# account_id|bank_name|balance|expenditure_codes(comma‑sep)

@@ -1,0 +1,11 @@
+3.Bank Account Ledger
+
+-Objective:
+-Track multiple bank accounts
+-Store:
+-Account ID, Bank Name, Balance, List of Expenditure Codes
+-Use HashMap for retrieval
+-Show relationships if needed (optional: graphs
+-The provided Java code implements a simple console application for managing bank accounts and linking expenditures to those accounts. 
+
+

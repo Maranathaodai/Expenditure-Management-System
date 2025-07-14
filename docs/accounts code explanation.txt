@@ -1,0 +1,50 @@
+Code Breakdown
+
+1. BankAccount Class:
+   - This class represents a bank account with attributes: `accountId`, `bankName`, `balance`, and a list of `expenditureCodes`.
+   - It has a constructor to initialize these attributes and an overridden `toString` method for displaying account details.
+
+2. BankLedger Class:
+   - This is the main class containing the `main` method and the logic for the application.
+   - It uses a `HashMap` to store bank accounts, where the key is the account ID and the value is the `BankAccount` object.
+
+3. Main Menu:
+   - The application runs in a loop, displaying a menu with options to add a bank account, view a specific account, view all accounts, link an expenditure to an account, or exit the application.
+   - User input is handled using a `Scanner`.
+
+4. Adding Bank Accounts:
+   - The `addAccount` method prompts the user for the account ID, bank name, and initial balance. It creates a new `BankAccount` object and stores it in the `HashMap`.
+
+5. Viewing a Specific Account:
+   - The `viewAccount` method allows the user to enter an account ID and retrieves the corresponding `BankAccount` object from the `HashMap`, displaying its details.
+
+6. Viewing All Accounts:
+   - The `viewAllAccounts` method iterates through the `HashMap` and prints all bank accounts stored.
+
+7. Linking Expenditures:
+   - The `linkExpenditure` method allows the user to enter an account ID and an expenditure code. If the account exists, the expenditure code is added to the account's list of expenditure codes.
+
+Example Usage
+
+- Adding a Bank Account:
+  - The user is prompted to enter the account ID, bank name, and initial balance. After entering the details, the account is created and stored.
+
+- Viewing a Specific Account:
+  - The user can enter an account ID to retrieve and display its details. If the account does not exist, a message indicating that the account was not found is displayed.
+
+- Viewing All Accounts:
+  - The user can view all bank accounts by selecting the appropriate menu option. The application lists all accounts currently stored in the `HashMap`.
+
+- Linking an Expenditure:
+  - The user can link an expenditure code to a specific account by entering the account ID and the expenditure code. If the account exists, the code is added to the account's expenditure list.
+
+Potential Improvements
+
+1. Input Validation:Implement checks to ensure that the account ID is unique, the balance is a valid number, and the expenditure code is not empty.
+2. Data Persistence:Consider saving bank accounts and expenditures to a file or database so that they persist between application runs.
+3. Enhanced User Interface:Improve the user interface for better usability, possibly by using a graphical user interface (GUI) instead of a console application.
+4. Error Handling:Add error handling for invalid inputs, such as non-numeric values for balance.
+
+Conclusion
+
+This Java application provides a basic framework for managing bank accounts and linking expenditures. It can be expanded and improved based on user needs and requirements. 

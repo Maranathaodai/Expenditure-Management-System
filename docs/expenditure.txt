@@ -1,0 +1,14 @@
+1.Expenditure Records
+
+Objective:
+Record expenditure details:
+-Code, Amount, Date, Phase, Category, Account Used
+-Store records using HashMap or LinkedList
+-Retrieve by Expenditure Code
+
+
+
+
+The provided Java code implements a simple console application for managing expenditure records. It allows users to add expenditures and view them by their unique code. 
+
+ 
