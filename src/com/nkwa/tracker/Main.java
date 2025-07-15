@@ -11,7 +11,8 @@ public class Main {
             System.out.println("1. Manage Expenditure Records");
             System.out.println("2. Manage Categories");
             System.out.println("3. Manage Bank Ledger");
-            System.out.println("4. Exit");
+            System.out.println("4. Generate Reports");
+            System.out.println("5. Exit");
             System.out.print("Select option: ");
             int choice = -1;
             try {
@@ -32,6 +33,9 @@ public class Main {
                     BankLedger.main(null);
                     break;
                 case 4:
+                    ReportGenerator.generateReport();
+                    break;
+                case 5:
                     System.out.println("Goodbye.");
                     System.exit(0);
                     break;
