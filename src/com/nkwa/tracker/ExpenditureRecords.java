@@ -48,12 +48,36 @@ class Expenditure {
 
     @Override
     public String toString() {
-        return "Code: " + code + ", Amount: " + amount + ", Date: " + date + ", Phase: " + phase + 
+        return "Code: " + code + ", Amount: " + String.format("%.2f", amount) + ", Date: " + date + ", Phase: " + phase +
                ", Category: " + category + ", Account Used: " + accountUsed;
     }
 }
 
 public class ExpenditureRecords {
+    static void loadBankAccounts() {
+        bankAccounts.clear();
+        try (BufferedReader br = new BufferedReader(new FileReader("data/accounts.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length >= 3) {
+                    BankAccount acc = new BankAccount(
+                        parts[0],
+                        parts[1],
+                        Double.parseDouble(parts[2])
+                    );
+                    if (parts.length == 4 && !parts[3].isEmpty()) {
+                        for (String code : parts[3].split(",")) {
+                            acc.expenditureCodes.add(code);
+                        }
+                    }
+                    bankAccounts.put(parts[0], acc);
+                }
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Error loading bank accounts: " + e.getMessage());
+        }
+    }
     static Scanner scanner = new Scanner(System.in);
     static HashMap<String, Expenditure> expenditures = new HashMap<>();
     static Queue<Receipt> receiptQueue = new LinkedList<>();
@@ -90,10 +114,12 @@ public class ExpenditureRecords {
     public static void main(String[] args) {
         loadExpenditures();
         loadReceipts();
-        // Add some demo bank accounts
-        bankAccounts.put("ACC1", new BankAccount("ACC1", "GCB", 5000));
-        bankAccounts.put("ACC2", new BankAccount("ACC2", "Ecobank", 2000));
+        loadBankAccounts();
+        bankMinHeap.clear();
         bankMinHeap.addAll(bankAccounts.values());
+        // Only load bank accounts from user data file
+        // (Assume another method loads accounts from accounts.txt)
+        // bankMinHeap.addAll(bankAccounts.values());
 
         while (true) {
             System.out.println("\n--- Expenditure Records Menu ---");
@@ -178,14 +204,42 @@ public class ExpenditureRecords {
                 System.out.println("Invalid amount. Please enter a valid number.");
             }
         }
-        System.out.print("Enter Date: ");
-        String date = scanner.nextLine();
+        String date = "";
+        while (true) {
+            System.out.print("Enter Date (DD/MM/YYYY): ");
+            date = scanner.nextLine();
+            String[] dateParts = date.split("/");
+            if (dateParts.length == 3) {
+                try {
+                    int day = Integer.parseInt(dateParts[0]);
+                    int month = Integer.parseInt(dateParts[1]);
+                    int year = Integer.parseInt(dateParts[2]);
+                    if (day >= 1 && day <= 31 && month >= 1 && month <= 12 && year > 1900) {
+                        break;
+                    } else {
+                        System.out.println("Invalid date. Please enter a valid day (1-31), month (1-12), and year.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid date format. Please use DD/MM/YYYY.");
+                }
+            } else {
+                System.out.println("Invalid date format. Please use DD/MM/YYYY.");
+            }
+        }
         System.out.print("Enter Phase: ");
         String phase = scanner.nextLine();
         System.out.print("Enter Category: ");
         String category = scanner.nextLine();
-        System.out.print("Enter Account Used: ");
-        String accountUsed = scanner.nextLine();
+        String accountUsed = "";
+        while (true) {
+            System.out.print("Enter Account Used: ");
+            accountUsed = scanner.nextLine();
+            if (accountUsed != null && !accountUsed.trim().isEmpty()) {
+                break;
+            } else {
+                System.out.println("Account ID cannot be empty. Please enter a valid account ID.");
+            }
+        }
 
         Expenditure exp = new Expenditure(code, amount, date, phase, category, accountUsed);
         expenditures.put(code, exp);
@@ -226,9 +280,9 @@ public class ExpenditureRecords {
         int opt = Integer.parseInt(scanner.nextLine());
         switch (opt) {
             case 1:
-                System.out.print("Start date (YYYY-MM-DD): ");
+                System.out.print("Start date (DD/MM/YYYY): ");
                 String start = scanner.nextLine();
-                System.out.print("End date (YYYY-MM-DD): ");
+                System.out.print("End date (DD/MM/YYYY): ");
                 String end = scanner.nextLine();
                 searchByDateRange(start, end);
                 break;
@@ -338,7 +392,7 @@ public class ExpenditureRecords {
         if (acc.balance < 1000) {
             System.out.println("Warning: Low balance in account " + acc.accountId);
         } else {
-            System.out.println("Bank balance updated. New balance: " + acc.balance);
+            System.out.println("Bank balance updated. New balance: " + String.format("%.2f", acc.balance));
         }
     }
 
@@ -352,7 +406,7 @@ public class ExpenditureRecords {
     }
 
     static void monthlyBurnRate() {
-        System.out.print("Enter month (YYYY-MM): ");
+        System.out.print("Enter month (MM): ");
         String month = scanner.nextLine();
         double total = 0;
         for (Expenditure e : expenditures.values()) {

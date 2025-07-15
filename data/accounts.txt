@@ -1,1 +1,5 @@
-# account_id|bank_name|balance|expenditure_codes(comma‑sep)
+||3.0|
+1234567890|GGG|1200.0|
+123456|FNB|2.0|
+123456789|BBB|400.0|
+1234567|23|34.0|

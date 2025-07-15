@@ -18,6 +18,6 @@ public class BankAccount {
 
     @Override
     public String toString() {
-        return accountId + " | " + bankName + " | Balance: " + balance + " | Expenditures: " + expenditureCodes;
+        return accountId + " | " + bankName + " | Balance: " + String.format("%.2f", balance) + " | Expenditures: " + expenditureCodes;
     }
 }
