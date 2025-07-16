@@ -7,10 +7,10 @@ public class Main {
 
     public static void main(String[] args) {
         while (true) {
-            System.out.println("\n=== Nkwa Real Estate Expenditure Tracker ===");
+            System.out.println("\n=== Nkwa Real Estate Expenditure System ===");
             System.out.println("1. Manage Expenditure Records");
             System.out.println("2. Manage Categories");
-            System.out.println("3. Manage Bank Ledger");
+            System.out.println("3. Overview Bank");
             System.out.println("4. Generate Reports");
             System.out.println("5. Exit");
             System.out.print("Select option: ");
@@ -36,7 +36,7 @@ public class Main {
                     ReportGenerator.generateReport();
                     break;
                 case 5:
-                    System.out.println("Goodbye.");
+                    System.out.println("Thank you for using the system.");
                     System.exit(0);
                     break;
                 default:

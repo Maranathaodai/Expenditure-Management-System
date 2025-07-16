@@ -1,2 +1,0 @@
-# receipt_id|expenditure_code|file_path_or_ref
-you|groceries
