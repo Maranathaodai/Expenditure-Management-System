@@ -54,6 +54,53 @@ This section provides a summary of the system's purpose and its offline, data-st
 ---
 
 ## Documentation
+1. Data Structures Justification (data_structures.md)
+Detailed analysis of HashMap for expenditure storage
+HashSet justification for category management
+Queue implementation for receipt workflow
+PriorityQueue for bank account monitoring
+Business logic alignment and design principles
+
+2. Search and Sorting Techniques (search_sorting.md)
+TimSort implementation analysis
+Hash-based search algorithms
+Linear search with filtering techniques
+Performance optimization strategies
+Algorithm selection matrix and integration patterns
+
+3. Complexity Analysis (complexity_analysis.md)
+Complete Big-O and Omega notation analysis
+Time and space complexity for all operations
+Scalability analysis across different data volumes
+Performance optimization recommendations
+Future complexity improvements
+
+4. Comprehensive Technical Report (comprehensive_technical_report.md)
+Executive summary of the entire system
+Complete system architecture overview
+Detailed performance evaluation
+Design justifications and trade-off analysis
+Future optimization roadmap
+
+5. Documentation Index (README.md)
+Overview of all documentation files
+Quick reference tables for complexity and algorithms
+Implementation highlights and academic achievements
+
+Key Features of the Documentation:
+✅ Complete Big-O and Omega Analysis: Every operation analyzed with best, average, and worst-case scenarios
+
+✅ Data Structure Justifications: Detailed explanations for why each data structure was chosen based on business requirements
+
+✅ Algorithm Implementation Details: Comprehensive analysis of sorting and searching techniques with code examples
+
+✅ Performance Evaluation: Scalability analysis for small, medium, and large datasets
+
+✅ Academic Rigor: Professional-level complexity analysis demonstrating deep understanding of computer science fundamentals
+
+✅ Business Logic Integration: Technical choices clearly linked to real-world financial management requirements
+
+The documentation demonstrates sophisticated understanding of data structures, algorithms, and complexity analysis while maintaining practical relevance to the financial domain. Each report stands alone while contributing to a comprehensive technical analysis of your system.
 
 See the `docs/` folder for:
 
@@ -62,6 +109,10 @@ See the `docs/` folder for:
 - Complexity analysis
 
 ---
-
-*This project was built as a practical exercise in using core data structures for real-world accounting workflows. All code and design choices are explained in the docs folder for easy review by my lecturer or teammates.*
-
+MARANATHA OKELEY ODAI - 11025671
+PATRICK LARYEA- 11066506
+DAVID KANDA - 11038463
+SHEPHERD DAYIE - 11011472
+EMMANUEL OPOKU EFFAH - 11135584
+MANASSEH SEYRAM BAVUG - 11302416
+EBENEZER BADGER - 1
